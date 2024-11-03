@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from "react-native";
+import { Button, Text, Card, ButtonGroup } from '@rneui/themed';
 
 export default function MarylandEvents() {
 
     return (
         <View>
 
-            <h1>hello</h1>
+            <Text>hello</Text>
 
         </View>
     );
