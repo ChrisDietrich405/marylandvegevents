@@ -1,11 +1,19 @@
 import React, { useCallback, useState } from 'react';
 import { Link, Stack } from 'expo-router';
 import { View, StyleSheet, Image, Linking } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { Button, Text, Card, ButtonGroup } from '@rneui/themed';
 
 export default function HomeComponent() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const options = ['Maryland Events', 'D.C. Events'];
+
+  const navigation = useNavigation();
+
+  const routes = [
+    { name: 'MarylandEvents', params: { name: 'MarylandEvents' } },
+    { name: 'DCEvents', params: { name: 'DCEvents' } }
+  ];
 
   const styles = StyleSheet.create({
     wrapper: {
@@ -71,7 +79,11 @@ export default function HomeComponent() {
       <ButtonGroup
         buttons={options}
         selectedIndex={selectedIndex}
-        onPress={(value) => setSelectedIndex(value)}
+        onPress={(value) => {
+          setSelectedIndex(value);
+          const { name, params } = routes[value];
+          navigation.navigate(name, params);
+        }}
         containerStyle={{ marginBottom: 20 }}
       />
       {events.map((u, i) => {
