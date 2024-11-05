@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, Text, Card, ButtonGroup } from "@rneui/themed";
 
-export default function MarylandEvents() {
+export default function DCEvents() {
 	const styles = StyleSheet.create({
 		wrapper: {
 			marginTop: "100px",
