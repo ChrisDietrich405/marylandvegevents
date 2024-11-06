@@ -1,3 +1,6 @@
+//https://rnfirebase.io/#expo
+//https://docs.expo.dev/config-plugins/introduction/
+
 import React, { useCallback, useState } from "react";
 import { View, StyleSheet, Image, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
