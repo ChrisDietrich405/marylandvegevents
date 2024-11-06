@@ -1,18 +1,19 @@
 import React, { useCallback, useState } from "react";
-import { Link, Stack } from "expo-router";
 import { View, StyleSheet, Image, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Button, Text, Card, ButtonGroup } from "@rneui/themed";
 
 export default function HomeComponent() {
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const options = ["Maryland Events", "D.C. Events"];
+	const options = ["Maryland Events", "D.C. Events", "Login", "CreateAccount"];
 
 	const navigation = useNavigation();
 
 	const routes = [
 		{ name: "MarylandEvents", params: { name: "MarylandEvents" } },
 		{ name: "DCEvents", params: { name: "DCEvents" } },
+		{ name: "Login", params: { name: "Login" } },
+		{ name: "CreateAccount", params: { name: "CreateAccount" } },
 	];
 
 	const styles = StyleSheet.create({
@@ -64,12 +65,9 @@ export default function HomeComponent() {
 
 	const OpenURLButton = ({ url, children }) => {
 		const handlePress = useCallback(async () => {
-			// Checking if the link is supported for links with custom URL scheme.
 			const supported = await Linking.canOpenURL(url);
 
 			if (supported) {
-				// Opening the link with some app, if the URL scheme is "http" the web link should be opened
-				// by some browser in the mobile
 				await Linking.openURL(url);
 			} else {
 				Alert.alert(`Don't know how to open this URL: ${url}`);
@@ -106,7 +104,7 @@ export default function HomeComponent() {
 				}}
 				buttonStyle={{ backgroundColor: "#288528" }}
 				textStyle={{ color: "#fff" }}
-				selectedButtonStyle={{ backgroundColor: "#B0B9B0" }} // Change this to your selected button background color
+				selectedButtonStyle={{ backgroundColor: "#B0B9B0" }}
 				selectedTextStyle={{ color: "#fff" }}
 			/>
 			{events.map((u, i) => {

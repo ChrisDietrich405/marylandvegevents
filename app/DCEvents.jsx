@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { Button, Text, Card, ButtonGroup } from "@rneui/themed";
+import React, { useCallback } from "react";
+import { View, StyleSheet, Image } from "react-native";
+import { Button, Text, Card } from "@rneui/themed";
 
 export default function DCEvents() {
 	const styles = StyleSheet.create({
@@ -18,11 +18,12 @@ export default function DCEvents() {
 			minWidth: "100%",
 			width: "100%",
 		},
-		// image: {
-		//   width: 30,
-		//   height: 30,
-		//   marginRight: 10,
-		// },
+		image: {
+			width: 258,
+			height: 82,
+			margin: 30,
+			alignSelf: "center",
+		},
 		name: {
 			fontSize: 14,
 			marginTop: 5,
@@ -56,21 +57,30 @@ export default function DCEvents() {
 			}
 		}, [url]);
 
-		return <Button title={children} onPress={handlePress} />;
+		return (
+			<Button
+				title={children}
+				onPress={handlePress}
+				buttonStyle={{ backgroundColor: "#288528" }}
+				textStyle={{ color: "#fff" }}
+				selectedButtonStyle={{ backgroundColor: "#B0B9B0" }}
+				selectedTextStyle={{ color: "#fff" }}
+			/>
+		);
 	};
 
 	return (
 		<View>
+			<Image
+				style={styles.image}
+				resizeMode="cover"
+				source={require("../assets/images/dc-events.png")}
+			/>
 			{events.map((u, i) => {
 				return (
 					<>
 						<Card key={i} style={{ display: "flex", flexDirection: "column" }}>
 							<View key={i} style={styles.user}>
-								{/* <Image
-                style={styles.image}
-                resizeMode="cover"
-                source={{ uri: u.avatar }}
-              /> */}
 								<Text style={styles.name}>{u.name}</Text>
 								<Text style={styles.name}>{u.date}</Text>
 								<OpenURLButton url={u.url}>Learn More </OpenURLButton>

@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { View, StyleSheet } from "react-native";
+
+import { View, StyleSheet, Image, Linking } from "react-native";
 import { Button, Text, Card, ButtonGroup } from "@rneui/themed";
 
 export default function MarylandEvents() {
@@ -18,11 +19,12 @@ export default function MarylandEvents() {
 			minWidth: "100%",
 			width: "100%",
 		},
-		// image: {
-		//   width: 30,
-		//   height: 30,
-		//   marginRight: 10,
-		// },
+		image: {
+			width: 258,
+			height: 82,
+			margin: 30,
+			alignSelf: "center",
+		},
 		name: {
 			fontSize: 14,
 			marginTop: 5,
@@ -61,16 +63,16 @@ export default function MarylandEvents() {
 
 	return (
 		<View>
+			<Image
+				style={styles.image}
+				resizeMode="cover"
+				source={require("../assets/images/maryland-events.png")}
+			/>
 			{events.map((u, i) => {
 				return (
 					<>
 						<Card key={i} style={{ display: "flex", flexDirection: "column" }}>
 							<View key={i} style={styles.user}>
-								{/* <Image
-                style={styles.image}
-                resizeMode="cover"
-                source={{ uri: u.avatar }}
-              /> */}
 								<Text style={styles.name}>{u.name}</Text>
 								<Text style={styles.name}>{u.date}</Text>
 								<OpenURLButton url={u.url}>Learn More </OpenURLButton>
