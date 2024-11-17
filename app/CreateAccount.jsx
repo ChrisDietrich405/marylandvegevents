@@ -6,17 +6,21 @@ export default function CreateAccountScreen() {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [secureText, setSecureText] = useState(true);
+	// const [confirmPassword, setConfirmPassword] = useState("");
+	// const [secureText, setSecureText] = useState(true);
 
-	const handleCreateAccount = () => {
-		if (password !== confirmPassword) {
-			alert("Passwords do not match");
-			return;
-		}
-
-		alert("Account created successfully!");
-	};
+	// const signUp = async () => {
+	// 	setLoading(true);
+	// 	try {
+	// 		await auth().createUserWithEmailAndPassword(email, password);
+	// 		alert("Check your emails!");
+	// 	} catch (e) {
+	// 		const err = e;
+	// 		alert("Registration failed: " + err.message);
+	// 	} finally {
+	// 		setLoading(false);
+	// 	}
+	// };
 
 	return (
 		<View style={{ flex: 1, justifyContent: "center", padding: 20 }}>
@@ -46,9 +50,9 @@ export default function CreateAccountScreen() {
 				}
 				value={password}
 				onChangeText={setPassword}
-				secureTextEntry={secureText}
+				// secureTextEntry={secureText}
 			/>
-			<Input
+			{/* <Input
 				placeholder="Confirm Password"
 				leftIcon={<Icon name="lock" />}
 				rightIcon={
@@ -60,7 +64,7 @@ export default function CreateAccountScreen() {
 				value={confirmPassword}
 				onChangeText={setConfirmPassword}
 				secureTextEntry={secureText}
-			/>
+			/> */}
 			<Button
 				title="Create Account"
 				onPress={handleCreateAccount}
